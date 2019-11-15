@@ -1,0 +1,58 @@
+{
+    "title":"APIName",
+    "stage":"/v0",
+    "apiIntegration":{
+        "credentials":"arn:aws:iam::111111111111:role/APIRoleName",
+        "uri":"arn:aws:apigateway:eu-south-7:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-south-7:111111111:function:APILambda/invocations"
+    },
+    "paths":[
+        {
+            "path":"/status",
+            "methods":{
+                "get":{"security":"api_key"}
+            }
+        },
+        {
+            "path":"/users",
+            "methods":{
+                "get":{"security":"api_key"},
+                "post":{
+                    "security":"api_key",
+                    "payloadSchema":"create_user"
+                }
+            },
+            "includeOptions":true
+        },
+        {
+            "path":"/users/{userId}",
+            "methods":{
+                "get":{"security":"api_key"},
+                "delete":{"security":"api_key"},
+                "put":{
+                    "security":"api_key",
+                    "payloadSchema":"update_user"
+                }                
+            },
+            "includeOptions":true
+        }
+    ],
+    "schemas":{
+        "create_user":{
+            "title":"Create a user",
+            "description":"Payload to create a user",
+            "fields":["username","password","email"]
+        },
+        "update_user":{
+            "title":"Update a user",
+            "description":"Payload to update a user",
+            "fields":["email"]
+        }
+    },
+    "securityDefinitions": {
+        "api_key":{
+            "type":"apiKey",
+            "name":"x-api-key",
+            "in":"header"
+        }
+    }
+}
