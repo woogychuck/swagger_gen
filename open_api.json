@@ -5,6 +5,9 @@
         "credentials":"arn:aws:iam::111111111111:role/APIRoleName",
         "uri":"arn:aws:apigateway:eu-south-7:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-south-7:111111111:function:APILambda/invocations"
     },
+    "allPaths":{
+        "headers":["Authorization"]
+    },
     "paths":[
         {
             "path":"/status",
@@ -19,6 +22,17 @@
                 "post":{
                     "security":"api_key",
                     "payloadSchema":"create_user"
+                }
+            },
+            "includeOptions":true
+        },
+        {
+            "path":"/teams",
+            "methods":{
+                "get":{"security":"api_key"},
+                "post":{
+                    "security":"api_key",
+                    "payloadSchema":"create_team"
                 }
             },
             "includeOptions":true
@@ -46,6 +60,11 @@
             "title":"Update a user",
             "description":"Payload to update a user",
             "fields":["email"]
+        },
+        "create_team":{
+            "title":"Create a team",
+            "description":"Payload to create a team",
+            "fields":["name","description","owner"]
         }
     },
     "securityDefinitions": {

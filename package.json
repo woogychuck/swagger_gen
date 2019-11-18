@@ -1,0 +1,36 @@
+{
+  "name": "@woogychuck/swagger_gen",
+  "version": "0.0.1",
+  "description": "Generates OpenAPI yaml files for AWS API Gateway",
+  "bin": "./dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "babel src --out-dir dist --copy-files",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && npm run transpile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woogychuck/swagger_gen.git"
+  },
+  "keywords": [
+    "CLI",
+    "OpenAPI",
+    "API Gateway",
+    "AWS"
+  ],
+  "author": "Ian Muir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woogychuck/swagger_gen/issues"
+  },
+  "homepage": "https://github.com/woogychuck/swagger_gen#readme",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1"
+  }
+}
