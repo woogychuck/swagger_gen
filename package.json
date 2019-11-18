@@ -4,7 +4,7 @@
   "description": "Generates OpenAPI yaml files for AWS API Gateway",
   "bin": "./dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run transpile && JASMINE_CONFIG_PATH=jasmine.json jasmine",
     "transpile": "babel src --out-dir dist --copy-files",
     "clean": "rm -rf dist",
     "build": "npm run clean && npm run transpile"
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1"
+    "@babel/preset-env": "^7.7.1",
+    "jasmine": "^3.5.0"
   }
 }

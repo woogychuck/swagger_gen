@@ -26,7 +26,7 @@ class PathGenerator extends _generator_base.default {
 
     for (let pathIndex = 0; pathIndex < this.paths.length; pathIndex++) {
       const currentPath = this.paths[pathIndex];
-      let methodList = [];
+      let methodList = ['OPTIONS'];
       let pathYaml = '  ' + currentPath.path + ':\n';
 
       for (const method in currentPath.methods) {

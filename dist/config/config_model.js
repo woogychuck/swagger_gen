@@ -16,6 +16,14 @@ class ConfigModel {
     this.apiIntegration = configJson.apiIntegration || null;
     this.schemas = configJson.schemas;
     this.securityDefinitions = configJson.securityDefinitions;
+
+    if (configJson.allPaths) {
+      for (let pathIndex = 0; pathIndex < this.paths.length; pathIndex++) {
+        let currentPath = this.paths[pathIndex];
+
+        if (allPaths.headers) {}
+      }
+    }
   }
 
 }
