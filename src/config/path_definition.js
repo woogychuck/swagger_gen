@@ -6,8 +6,8 @@ export default class PathDefinition{
             throw new Error("A path configuration is required");
         }
 
-        if(!pathConfig.path){
-            throw new Error("A path must be provided for path configurations");
+        if(!pathConfig.path || typeof pathConfig.path !== 'string'){
+            throw new Error("A valid path property must be provided for path configurations");
         }else{
             this.path = pathConfig.path;
         }
