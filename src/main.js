@@ -4,11 +4,13 @@ import CliOptions from './config/cli_options';
 import ConfigLoader from './config/config_loader';
 import RootGenerator from './generators/root_generator';
 import sywac from 'sywac';
+import * as fs from 'fs';
 
 function generateYamlFile(options){
     const configPath = options.config || null;
     const outputPath = options.output || null;
-    const configuration = ConfigLoader.load(configPath);
+    const configLoader = new ConfigLoader(fs);
+    const configuration = configLoader.load(configPath);
     const rootGenerator = new RootGenerator(configuration);
     rootGenerator.writeFile(outputPath);
 }

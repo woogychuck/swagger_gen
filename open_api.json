@@ -1,6 +1,6 @@
 {
     "title":"APIName",
-    "stage":"/v0",
+    "basePath":"/v0",
     "apiIntegration":{
         "credentials":"arn:aws:iam::111111111111:role/APIRoleName",
         "uri":"arn:aws:apigateway:eu-south-7:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-south-7:111111111:function:APILambda/invocations"
