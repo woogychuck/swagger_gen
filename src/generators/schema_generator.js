@@ -20,8 +20,6 @@ export default class SchemaGenerator extends GeneratorBase {
                 properties: {}
             };
 
-            console.log(schemaDef);
-
             for(let fieldIndex = 0; fieldIndex < schemaDef.fields.length; fieldIndex++){
                 const fieldDef = schemaDef.fields[fieldIndex];
                 this.json[schemaName].required.push(fieldDef.name);

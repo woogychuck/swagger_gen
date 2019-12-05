@@ -23,10 +23,10 @@ export default class PathGenerator extends GeneratorBase{
         methodList.push(method.toUpperCase());
         currentPathObj[method] = {};
         let currentMethodObj = currentPathObj[method];
-        currentMethodObj.produces = currentPathDefinition.produces;
+        currentMethodObj.produces = [currentPathDefinition.produces];
         
         if(method !== 'get'){
-          currentMethodObj.consumes = currentPathDefinition.produces;
+          currentMethodObj.consumes = [currentPathDefinition.produces];
         }
 
         let parametersArr = [];

@@ -2,6 +2,7 @@ import GeneratorBase from './generator_base';
 import PathGenerator from './path_generator';
 import SchemaGenerator from './schema_generator';
 import SecurityDefinitionGenerator from './security_definition_generator';
+import chalk from 'chalk';
 import * as json2yaml from 'json2yaml';
 import * as fs from 'fs';
 
@@ -18,11 +19,11 @@ export default class RootGenerator extends GeneratorBase {
             swagger: '2.0',
             info: {
                 version:'2018-06-12T20:58:41Z',
-                title: this.configuration.title,
-                host: '',
-                basePath: this.configuration.basePath,
-                schemes: ['https']
+                title: this.configuration.title
             },
+            host: '',
+            basePath: this.configuration.basePath,
+            schemes: ['https'],
             paths:{}
         };
 
@@ -44,10 +45,10 @@ export default class RootGenerator extends GeneratorBase {
         }
         fs.writeFile(path,this.yaml,(err)=>{
             if(err){
-                console.log('AN ERROR OCCURRED SAVING THE FILE');
+                console.log(chalk.red('AN ERROR OCCURRED SAVING THE FILE'));
                 console.log(err);
             }else{
-                console.log('File Successfully Written');
+                console.log(chalk.green('File Successfully Written'));
             }
         })
     }
