@@ -1,9 +1,9 @@
 {
   "name": "@woogychuck/swagger_gen",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Generates OpenAPI yaml files for AWS API Gateway",
   "bin": {
-    "swagger_gen":"./dist/main.js"
+    "swagger_gen": "./dist/main.js"
   },
   "scripts": {
     "test": "npm run transpile && JASMINE_CONFIG_PATH=jasmine.json jasmine",
