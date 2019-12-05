@@ -2,4 +2,6 @@ jasmine.json
 open_api.json
 swagger.yaml
 .babelrc
+.nvmrc
+README.md
 src
