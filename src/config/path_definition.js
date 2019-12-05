@@ -15,9 +15,14 @@ export default class PathDefinition{
         if(!pathConfig.methods || typeof pathConfig.methods != "object"){
             throw new Error("A path must have a valid methods definition");
         }else{
-            this.methods = new MethodsDefinition(pathConfig.methods);
+            const methodsDefinition = new MethodsDefinition(pathConfig.methods);
+            this.methods = methodsDefinition.methods;
+            this.requiredSchemas = methodsDefinition.requiredSchemas;
+            this.requiredSecurityDefinitions = methodsDefinition.requiredSecurityDefinitions;
         }
 
         this.includeOptions = pathConfig.includeOptions || false;
+        this.produces = 'application/json';
+        this.consumes = 'application/json';
     }
 }

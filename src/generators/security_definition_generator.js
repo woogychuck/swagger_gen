@@ -4,18 +4,19 @@ export default class SecurityDefinitionGenerator extends GeneratorBase {
     constructor(configuration){
         super(configuration);
         this.securityDefinitions = this.configuration.securityDefinitions;
-        this.yaml = '';
+        this.json = {};
         this.generate();
     }
 
     generate(){
-        this.yaml += 'securityDefinitions:\n';
-    for(let securityDefinitionName in this.securityDefinitions){
-        const securityDefinition = this.securityDefinitions[securityDefinitionName];
-        this.yaml += `  ${securityDefinitionName}:
-    type: "${securityDefinition.type}"
-    name: "${securityDefinition.name}"
-    in: "${securityDefinition.in}"\n`
-    }
+        for(let securityDefinitionName in this.securityDefinitions){
+            const securityDefinition = this.securityDefinitions[securityDefinitionName];
+
+            this.json[securityDefinitionName] = {
+                type: securityDefinition.type,
+                name: securityDefinition.name,
+                in: securityDefinition.in
+            }
+        }
     }
 }

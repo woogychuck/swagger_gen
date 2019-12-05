@@ -1,5 +1,5 @@
 {
-    "title":"APIName",
+    "title":"ExampleApi",
     "basePath":"/v0",
     "apiIntegration":{
         "credentials":"arn:aws:iam::111111111111:role/APIRoleName",
@@ -27,17 +27,6 @@
             "includeOptions":true
         },
         {
-            "path":"/teams",
-            "methods":{
-                "get":{"security":"api_key"},
-                "post":{
-                    "security":"api_key",
-                    "payloadSchema":"create_team"
-                }
-            },
-            "includeOptions":true
-        },
-        {
             "path":"/users/{userId}",
             "methods":{
                 "get":{"security":"api_key"},
@@ -60,11 +49,6 @@
             "title":"Update a user",
             "description":"Payload to update a user",
             "fields":["email"]
-        },
-        "create_team":{
-            "title":"Create a team",
-            "description":"Payload to create a team",
-            "fields":["name","description","owner"]
         }
     },
     "securityDefinitions": {

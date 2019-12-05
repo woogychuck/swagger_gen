@@ -11,6 +11,7 @@ function generateYamlFile(options){
     const outputPath = options.output || null;
     const configLoader = new ConfigLoader(fs);
     const configuration = configLoader.load(configPath);
+    console.log(JSON.stringify(configuration,null,2));
     const rootGenerator = new RootGenerator(configuration);
     rootGenerator.writeFile(outputPath);
 }

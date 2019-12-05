@@ -28,6 +28,7 @@
   "homepage": "https://github.com/woogychuck/swagger_gen#readme",
   "dependencies": {
     "chalk": "^3.0.0",
+    "json2yaml": "^1.1.0",
     "sywac": "^1.2.2"
   },
   "devDependencies": {

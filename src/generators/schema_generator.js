@@ -4,37 +4,34 @@ export default class SchemaGenerator extends GeneratorBase {
     constructor(configuration){
         super(configuration);
         this.schemas = this.configuration.schemas;
-        this.yaml = '';
+        this.json = {};
         this.generate();
     }
 
     generate(){
-        this.yaml += 'definitions:\n'
-    for(let schemaName in this.schemas){
-        const schemaDef = this.schemas[schemaName];
-        this.yaml += `  ${schemaName}:
-    type: "object"
-    title: "${schemaDef.title || schemaName}"
-    description: "${schemaDef.description || ''}"\n`;
+        for(let schemaName in this.schemas){
+            const schemaDef = this.schemas[schemaName];
 
-        let requiredYaml = '    required:\n'
-        let propertiesYaml = '    properties:\n';
+            this.json[schemaName] = {
+                type: 'object',
+                title: schemaDef.title || schemaName,
+                description: schemaDef.description || '',
+                required: [],
+                properties: {}
+            };
 
-        for(let fieldIndex = 0; fieldIndex < schemaDef.fields.length; fieldIndex++){
-            const fieldDef = schemaDef.fields[fieldIndex];
-            if(typeof fieldDef === 'string'){
-                requiredYaml += `    - "${fieldDef}"\n`;
-                propertiesYaml += `      ${fieldDef}:
-        type: "string"
-        description: "Required string ${fieldDef}"\n`
-            }else{
-                //Add logic for complex fields her
-                console.log('TYPE OF FIELD DEF: ' + typeof fieldDef);
+            console.log(schemaDef);
+
+            for(let fieldIndex = 0; fieldIndex < schemaDef.fields.length; fieldIndex++){
+                const fieldDef = schemaDef.fields[fieldIndex];
+                this.json[schemaName].required.push(fieldDef.name);
+                this.json[schemaName].properties[fieldDef.name] = {
+                    name: fieldDef.name,
+                    required: fieldDef.required,
+                    type: fieldDef.type,
+                    description: fieldDef.description
+                }
             }
         }
-
-        this.yaml += requiredYaml;
-        this.yaml += propertiesYaml;
-    }
     }
 }

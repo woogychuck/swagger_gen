@@ -26,8 +26,8 @@ export default class ConfigModel{
             for(var pathIndex = 0; pathIndex < configJson.paths.length; pathIndex++){
                 const newPath = new PathDefinition(configJson.paths[pathIndex], configJson.allPaths);
                 this.paths.push(newPath);
-                requiredSchemas = ArrayUtils.mergeDedup(this.requiredSchemas, newPath.methods.requiredSchemas);
-                requiredSecurityDefinitions = ArrayUtils.mergeDedup(this.requiredSecurityDefinitions, newPath.methods.requiredSecurityDefinitions);
+                requiredSchemas = ArrayUtils.mergeDedup(requiredSchemas, newPath.requiredSchemas);
+                requiredSecurityDefinitions = ArrayUtils.mergeDedup(requiredSecurityDefinitions, newPath.requiredSecurityDefinitions);
             }
         }
         this.apiIntegration = configJson.apiIntegration || null;
@@ -45,8 +45,6 @@ export default class ConfigModel{
         if(identifiedSchemas.length > 0){
             console.log(Chalk.yellow(`The following schemas are required by paths, but not included in the schema configuration: ${identifiedSchemas.join(',')}`));
         }
-
-
         
         //Ensure we have all required security definitions
         let identifiedSecurityDefinitions = JSON.parse(JSON.stringify(requiredSecurityDefinitions));
