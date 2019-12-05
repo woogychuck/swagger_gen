@@ -1,6 +1,6 @@
 {
   "name": "@woogychuck/swagger_gen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generates OpenAPI yaml files for AWS API Gateway",
   "bin": "./dist/main.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "build": "npm run clean && npm run transpile && chmod +x ./dist/main.js",
     "start": "npm run build && node ./dist/main.js",
     "prepare": "npm run transpile",
-    "postversion" : "git push && git push --tags"
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
